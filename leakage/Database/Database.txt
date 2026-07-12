@@ -177,7 +177,7 @@ INSERT INTO `metadata` VALUES ('3', 'Programming', 'Python', 'Python.txt', '06/0
 INSERT INTO `reviews` VALUES ('1', 'Krishna', 'Java Copyright', 'Technology', 'Java is always good', '06/05/2026   18:47:26');
 INSERT INTO `reviews` VALUES ('2', 'sai', 'Python', 'Programming', 'It is easy and good programming Language.', '06/05/2026   19:25:51');
 INSERT INTO `search` VALUES ('1', 'Krishna', 'java', '06/05/2026   18:46:56');
-INSERT INTO `search` VALUES ('2', 'Akash', 'java', '06/05/2026   18:47:10');
+INSERT INTO `search` VALUES ('2', 'Krishna', 'java', '06/05/2026   18:47:10');
 INSERT INTO `search` VALUES ('3', 'sai', 'python', '06/05/2026   19:25:00');
 INSERT INTO `search` VALUES ('4', 'sai', 'python', '06/05/2026   19:25:25');
 INSERT INTO `search_found` VALUES ('1', 'Krishna', 'java', 'Java Copyright', '06/05/2026   18:46:56');
