@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: iot-leakage-db
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: leakage_of_authorization
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./leakage/Database/Database.txt:/schema/Database.txt:ro
+      - ./docker/mysql/01-init.sh:/docker-entrypoint-initdb.d/01-init.sh:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 30s
+
+  app:
+    build: .
+    image: iot-leakage-app:latest
+    container_name: iot-leakage-app
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: "3306"
+      DB_NAME: leakage_of_authorization
+      DB_USER: root
+      DB_PASSWORD: root
+
+volumes:
+  mysql_data:
